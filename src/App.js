@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { IntlProvider } from 'react-intl';
 import './App.css';
+import Home from './components/Home';
+import messages from './message';
 
 function App() {
+  
+  const [language, setLanguage] = useState('en');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IntlProvider
+      messages={messages[language]}
+      locale={language}
+     >
+      <div className="App">
+        <button onClick={() => setLanguage('en')}>English</button>
+        <button onClick={() => setLanguage('es')}>Spanish</button>
+          <Home />
+      </div>
+    </IntlProvider>
   );
 }
 
