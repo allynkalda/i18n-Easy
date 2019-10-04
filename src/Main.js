@@ -21,7 +21,7 @@ export default function Main(props) {
         <div className="App">
           <Navbar history={props.history} handleClick={handleClick} language={language}></Navbar>
         </div>
-            <Home></Home>
+            <Home language={language}></Home>
       </IntlProvider>
     )
 }

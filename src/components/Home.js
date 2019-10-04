@@ -5,8 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 import hotels from '../data/hotels'
-import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles({
     card: {
@@ -17,26 +17,30 @@ const useStyles = makeStyles({
     },
   });
 
-export default function Home() {
+function Home(prop) {
 
     const classes = useStyles();
+    const { language } = prop;
 
     const renderGrid = (hotel) => {
         return (
-        <Card className={classes.card}>
-            <CardActionArea>
-            <CardMedia
-                className={classes.media}
-                image={hotel.image}
-                title={hotel.name}
-             />
-            <Typography gutterBottom variant="h5" component="h2">
-                <FormattedMessage id="home.greeting" defaultMessage="Hello World!"/>
-            </Typography>
-            </CardActionArea>
-        </Card>
+        <Link style={{ textDecoration: 'none' }} to={`/${language}/` + `${hotel.id}`}>
+            <Card className={classes.card}>
+                <CardActionArea>
+                <CardMedia
+                    className={classes.media}
+                    //image={hotel.image}
+                    title={hotel.name}
+                />
+                <Typography gutterBottom variant="h5" component="h2">
+                    <FormattedMessage id="home.greeting" defaultMessage="Hello World!"/>
+                </Typography>
+                </CardActionArea>
+            </Card>
+        </Link>
         )
-    }
+    };
+
     return (
         <div>
             { hotels.map( hotel => {
@@ -45,3 +49,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default Home;
