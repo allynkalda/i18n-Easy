@@ -1,5 +1,4 @@
-const hotels = {
-    items: [
+const hotels = [
         {
             "name": "Hotel 1",
             "id": 1,
@@ -35,7 +34,6 @@ const hotels = {
             "image": "https://media-cdn.tripadvisor.com/media/photo-s/10/00/09/a8/swimming-pool.jpg",
             "price": "50 euros"
         }
-    ]
-};
+    ];
 
 export default hotels;

@@ -32,7 +32,7 @@ function Navbar(props) {
                 {language === 'en' ? 'Hotels' : 'Hoteles'}
               </Typography>
               <Button color="inherit" onClick={() => {pushPage('en'); handleClick('en')}}>EN</Button>
-              <Button color="inherit" onClick={() => { pushPage('es'); handleClick('es');}}>ES</Button>
+              <Button color="inherit" onClick={() => {pushPage('es'); handleClick('es');}}>ES</Button>
             </Toolbar>
           </AppBar> 
         </div>
