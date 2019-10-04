@@ -19,9 +19,7 @@ function App() {
       locale={language}
      >
       <div className="App">
-        <Navbar handleClick={handleClick}></Navbar>
-        <button onClick={() => setLanguage('en')}>English</button>
-        <button onClick={() => setLanguage('es')}>Spanish</button>
+        <Navbar handleClick={handleClick} language={language}></Navbar>
           <Home />
       </div>
     </IntlProvider>

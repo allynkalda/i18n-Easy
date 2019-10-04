@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar(props) {
 
-    const { handleClick } = props;
+    const { handleClick, language } = props;
     const classes = useStyles();
 
     return (
@@ -24,10 +24,10 @@ export default function Navbar(props) {
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
-                Hotels
+                {language === 'en' ? 'Hotels' : 'Hoteles'}
               </Typography>
               <Button color="inherit" onClick={() => handleClick('en')}>EN</Button>
-              <Button color="inherit" onClick={() => handleClick('es')}>SP</Button>
+              <Button color="inherit" onClick={() => handleClick('es')}>ES</Button>
             </Toolbar>
           </AppBar> 
         </div>
