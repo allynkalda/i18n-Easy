@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { IntlProvider } from 'react-intl';
 import { Switch, Route } from "react-router-dom";
 import './App.css';
-import Main from './Main';
-import Index from './components/Item'
+import Item from './components/Item';
+import messages from './message';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 
-function App() {
+function App(props) {
+
+  const [language, setLanguage] = useState('en');
+  const handleClick = (lang) => {
+    setLanguage(lang);
+  }
 
   return (
     <div>
+      <IntlProvider
+        messages={messages[language]}
+        locale={language}
+       >
+       <Navbar handleClick={handleClick} language={language}></Navbar>
       <Switch>
-          <Route exact path={["/", "/en", "/es"]} component={Main}></Route>
-          <Route path="/en/:id" component={Index}></Route>
-          <Route path="/es/:id" component={Index}></Route>
+          <Route exact path={["/", "/en", "/es"]} render={(props) => <Home {...props} language={language} />} />
+          <Route path="/en/:id" render={(props) => <Item {...props} language={language} />} />
+          <Route path="/es/:id" render={(props) => <Item {...props} language={language} />} />
       </Switch>
+      </IntlProvider>
     </div>
   );
 }
