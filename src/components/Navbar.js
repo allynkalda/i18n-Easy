@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar(props) {
 
-    const { handleClick, language } = props;
+    const { handleClick } = props;
     const classes = useStyles();
 
     return (
@@ -26,7 +27,7 @@ export default function Navbar(props) {
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
               <Link to={'/'} style={{textDecoration: 'none', color: 'white'}}>
-                { language === 'en' ? 'Hotels' : 'Hoteles'}
+              <FormattedMessage id="home.title" defaultMessage="Hotel"/>
               </Link>
               </Typography>
               <Button color="inherit" onClick={() => handleClick('en')}>EN</Button>
